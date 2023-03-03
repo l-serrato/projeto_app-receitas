@@ -8,8 +8,6 @@ function SearchBar() {
   const { onChangeMeals, onClickMeals } = useContext(MealsContext);
   const { onChangeDrinks, onClickDrinks } = useContext(DrinksContext);
 
-  const teste = (event) => (history.location.pathname === '/drinks' ? onClickDrinks(event) : onClickMeals(event));
-
   return (
     <div>
       <input
@@ -24,7 +22,10 @@ function SearchBar() {
         name="ingredient"
         id=""
         data-testid="ingredient-search-radio"
-        onClick={ teste }
+        onClick={
+          (e) => (
+            history.location.pathname === '/drinks' ? onClickDrinks(e) : onClickMeals(e))
+        }
       />
       ingredient
       <input
