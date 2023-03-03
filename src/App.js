@@ -8,7 +8,8 @@ import Drinks from './components/Drinks';
 import Recipe from './components/Recipe';
 import DoneRecipes from './components/DoneRecipes';
 import FavoriteRecipes from './components/FavoriteRecipes';
-import Foods from './components/Foods';
+/* import Foods from './components/Foods'; */
+import Meals from './components/Meals';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
 
       <Switch>
         <Route exact path="/" render={ () => <Login /> } />
-        <Route exact path="/meals" render={ (props) => <Foods { ...props } /> } />
+        <Route exact path="/meals" render={ (props) => <Meals { ...props } /> } />
         <Route exact path="/profile" render={ (props) => <Profile { ...props } /> } />
         <Route exact path="/drinks" render={ (props) => <Drinks { ...props } /> } />
         <Route
