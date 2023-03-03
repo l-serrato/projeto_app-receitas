@@ -4,6 +4,8 @@ import { PropTypes } from 'prop-types';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
+import SearchApiDrinks from '../context/SearchApiDrinks';
+import SearchApiMeals from '../context/SearchApiMeals';
 
 function Header({ pageTitle }) {
   // O page title recebido deve ser igual aos casos dos IF
@@ -28,7 +30,15 @@ function Header({ pageTitle }) {
         >
           <img src={ searchIcon } alt="Ícone de Busca" data-testid="search-top-btn" />
         </button>
-        { showSearchBar ? <SearchBar /> : null }
+        { showSearchBar
+          ? (
+            <SearchApiDrinks>
+              <SearchApiMeals>
+                <SearchBar />
+              </SearchApiMeals>
+            </SearchApiDrinks>
+          )
+          : null }
       </header>
     );
   }
