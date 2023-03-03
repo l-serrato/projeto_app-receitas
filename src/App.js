@@ -1,54 +1,57 @@
 import React from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Login from './pages/Login';
-import Meals from './pages/Meals';
-import Profile from './pages/Profile';
-import Drinks from './pages/Drinks';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import Drinks from './components/Drinks';
 import Recipe from './components/Recipe';
-import DoneRecipes from './pages/DoneRecipes';
-import FavoriteRecipes from './pages/FavoriteRecipes';
+import DoneRecipes from './components/DoneRecipes';
+import FavoriteRecipes from './components/FavoriteRecipes';
+import Foods from './components/Foods';
 
 function App() {
   return (
-    <Switch>
-      <Route exact path="/" render={ () => <Login /> } />
-      <Route exact path="/meals" render={ (props) => <Meals { ...props } /> } />
-      <Route exact path="/profile" render={ (props) => <Profile { ...props } /> } />
-      <Route exact path="/drinks" render={ (props) => <Drinks { ...props } /> } />
-      <Route
-        exact
-        path="/done-recipes"
-        render={ (props) => <DoneRecipes { ...props } /> }
-      />
-      <Route
-        exact
-        path="/favorite-recipes"
-        render={ (props) => <FavoriteRecipes { ...props } /> }
-      />
-      <Route
-        exact
-        path="/meals/:id-da-receita"
-        render={ (props) => <Recipe { ...props } /> }
-      />
-      <Route
-        exact
-        path="/drinks/:id-da-receita"
-        render={ (props) => <Recipe { ...props } /> }
-      />
-      <Route
-        exact
-        path="/meals/:id-da-receita/in-progress"
-        render={ (props) => <Recipe { ...props } /> }
-      />
-      <Route
-        exact
-        path="/drinks/:id-da-receita/in-progress"
-        render={ (props) => <Recipe { ...props } /> }
-      />
+    <BrowserRouter>
 
-    </Switch>
+      <Switch>
+        <Route exact path="/" render={ () => <Login /> } />
+        <Route exact path="/meals" render={ (props) => <Foods { ...props } /> } />
+        <Route exact path="/profile" render={ (props) => <Profile { ...props } /> } />
+        <Route exact path="/drinks" render={ (props) => <Drinks { ...props } /> } />
+        <Route
+          exact
+          path="/done-recipes"
+          render={ (props) => <DoneRecipes { ...props } /> }
+        />
+        <Route
+          exact
+          path="/favorite-recipes"
+          render={ (props) => <FavoriteRecipes { ...props } /> }
+        />
+        <Route
+          exact
+          path="/meals/:id-da-receita"
+          render={ (props) => <Recipe { ...props } /> }
+        />
+        <Route
+          exact
+          path="/drinks/:id-da-receita"
+          render={ (props) => <Recipe { ...props } /> }
+        />
+        <Route
+          exact
+          path="/meals/:id-da-receita/in-progress"
+          render={ (props) => <Recipe { ...props } /> }
+        />
+        <Route
+          exact
+          path="/drinks/:id-da-receita/in-progress"
+          render={ (props) => <Recipe { ...props } /> }
+        />
+
+      </Switch>
+    </BrowserRouter>
   );
 }
 
