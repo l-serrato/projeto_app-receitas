@@ -8,6 +8,8 @@ import Header from '../components/Header';
 
 describe('1 - Testando o componente Header', () => {
   it('Verifica se ao clicar no botão: "Search" é renderizada a barra de busca', () => {
+    // OPTEI POR FAZER O TESTE DESDE A APP, POIS RENDERIZAR A <HEADER /> DIRETO
+    // TRAZIA ALGUNS PROBLEMAS DE FALTA DE INFORMAÇÂO
     renderWithRouter(<App />);
     const emailInput = screen.getByTestId('email-input');
     const passwordInput = screen.getByTestId('password-input');
