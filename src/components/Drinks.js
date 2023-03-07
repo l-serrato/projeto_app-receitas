@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import DrinksContext from '../context/DinksContext';
+import Footer from './Footer';
 import Header from './Header';
 import RecipeCard from './RecipeCard';
 
@@ -26,6 +27,7 @@ export default function Drinks() {
         ))
           : <p>Nada por aqui... Procure alguma coisa!</p>
       }
+      <Footer />
     </main>
   );
 }
