@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Login from './components/Login';
 import Profile from './components/Profile';
+// import Footer from './components/Footer';
 import Drinks from './components/Drinks';
 import Recipe from './components/Recipe';
 import DoneRecipes from './components/DoneRecipes';

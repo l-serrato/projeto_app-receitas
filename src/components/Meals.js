@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from './Header';
+import Footer from './Footer';
 
 export default function Meals() {
   const [input, setInput] = useState('');
@@ -18,6 +19,7 @@ export default function Meals() {
         placeholder="insira um nome"
         onChange={ (e) => setInput(e.target.value) }
       />
+      <Footer />
       <button type="button" onClick={ handleClick }>
         Ir para receita
       </button>
