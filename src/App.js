@@ -13,6 +13,7 @@ import Meals from './components/Meals';
 import SearchApiDrinks from './context/SearchApiDrinks';
 import SearchApiMeals from './context/SearchApiMeals';
 import NotFound from './components/NotFound';
+import RecipeDetails from './components/RecipeDetails';
 
 function App() {
   return (
