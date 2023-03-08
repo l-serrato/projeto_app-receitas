@@ -1,8 +1,12 @@
 import React from 'react';
+import Footer from './Footer';
 import Header from './Header';
 
 export default function Profile() {
   return (
-    <Header pageTitle="Profile" />
+    <div>
+      <Header pageTitle="Profile" />
+      <Footer />
+    </div>
   );
 }
