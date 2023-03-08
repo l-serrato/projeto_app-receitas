@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import CurrentRecipeDetails from './CurrentRecipeDetails';
 
 function RecipeDetails() {
   const history = useHistory();
@@ -39,6 +38,8 @@ function RecipeDetails() {
     getData();
     getData2();
 
+    console.log(recommendationsData);
+
     const getDoneRecipes = localStorage.getItem('doneRecipes');
     const localDoneRecipes = getDoneRecipes ? JSON.parse(getDoneRecipes) : [];
     setDoneRecipes(localDoneRecipes);
@@ -56,13 +57,45 @@ function RecipeDetails() {
   if (pathname === 'meals') {
     return (
       <div>
-        <CurrentRecipeDetails
-          data={ data }
-          ingredients={ ingredients }
-          measure={ measure }
-          pathname={ pathname }
-          recommendationsData={ recommendationsData }
-        />
+        {
+          ['idMeal'] in data[pathname][0]
+          && Object.values(data)[0].map((el) => (
+            <div key={ el.idMeal }>
+              <img
+                src={ el.strMealThumb }
+                alt={ el.strMeal }
+                data-testid="recipe-photo"
+              />
+              <h3 data-testid="recipe-title">{ el.strMeal }</h3>
+              <h4 data-testid="recipe-category">{ el.strCategory }</h4>
+              {
+                ingredients.map((ingredient, index) => (
+                  <div key={ index }>
+                    <label
+                      htmlFor={ `${index}-ingredient` }
+                      data-testid={ `${index}-ingredient-name-and-measure` }
+                    >
+                      <input
+                        type="checkbox"
+                        name={ `${index}-ingredient` }
+                        id={ `${index}-ingredient` }
+                      />
+                      {`${ingredient} ${measure[index]}`}
+                    </label>
+                  </div>
+                ))
+              }
+              <p data-testid="instructions">{el.strInstructions}</p>
+              <iframe
+                title={ el.strMeal }
+                width="420"
+                height="315"
+                data-testid="video"
+                src={ `https://www.youtube.com/embed/${el.strYoutube.replace('https://www.youtube.com/watch?v=', '')}` }
+              />
+            </div>
+          ))
+        }
         {
           doneRecipes.some((el) => (el.id === id))
             ? '' : (
@@ -81,13 +114,38 @@ function RecipeDetails() {
 
   return (
     <div>
-      <CurrentRecipeDetails
-        data={ data }
-        ingredients={ ingredients }
-        measure={ measure }
-        pathname={ pathname }
-        recommendationsData={ recommendationsData }
-      />
+      {
+        ['idDrink'] in data[pathname][0]
+        && Object.values(data)[0].map((el) => (
+          <div key={ el.idDrink }>
+            <img
+              src={ el.strDrinkThumb }
+              alt={ el.strDrink }
+              data-testid="recipe-photo"
+            />
+            <h3 data-testid="recipe-title">{ el.strDrink }</h3>
+            <h4 data-testid="recipe-category">{ el.strAlcoholic }</h4>
+            {
+              ingredients.map((ingredient, index) => (
+                <div key={ index }>
+                  <label
+                    htmlFor={ `${index}-ingredient` }
+                    data-testid={ `${index}-ingredient-name-and-measure` }
+                  >
+                    <input
+                      type="checkbox"
+                      name={ `${index}-ingredient` }
+                      id={ `${index}-ingredient` }
+                    />
+                    {`${ingredient} ${measure[index]}`}
+                  </label>
+                </div>
+              ))
+            }
+            <p data-testid="instructions">{el.strInstructions}</p>
+          </div>
+        ))
+      }
       {
         doneRecipes.some((el) => (el.id === id))
           ? '' : (
