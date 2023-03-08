@@ -33,12 +33,12 @@ function App() {
         />
         <Route
           exact
-          path="/meals/:id-da-receita"
+          path="/meals/:id_da_receita"
           render={ (props) => <Recipe { ...props } /> }
         />
         <Route
           exact
-          path="/drinks/:id-da-receita"
+          path="/drinks/:id_da_receita"
           render={ (props) => <Recipe { ...props } /> }
         />
         <Route
