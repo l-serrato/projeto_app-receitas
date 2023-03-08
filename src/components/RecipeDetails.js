@@ -55,7 +55,7 @@ function RecipeDetails() {
 
   if (pathname === 'meals') {
     return (
-      <div className="recipeDetailsContainer">
+      <div>
         <CurrentRecipeDetails
           data={ data }
           ingredients={ ingredients }
@@ -80,7 +80,7 @@ function RecipeDetails() {
   }
 
   return (
-    <div className="recipeDetailsContainer">
+    <div>
       <CurrentRecipeDetails
         data={ data }
         ingredients={ ingredients }

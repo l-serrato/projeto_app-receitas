@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import '../styles/CurrentRecipeDetails.css';
 
 function CurrentRecipeDetails({ data, ingredients, measure, pathname,
   recommendationsData }) {
@@ -40,7 +39,7 @@ function CurrentRecipeDetails({ data, ingredients, measure, pathname,
                 data-testid="video"
                 src={ `https://www.youtube.com/embed/${el.strYoutube.replace('https://www.youtube.com/watch?v=', '')}` }
               />
-              <div className="recommendationsCardDiv">
+              <div className="recommendationscarddiv">
                 { Object.values(recommendationsData)[0].slice(0, MAX_RECOMMENDATIONS)
                   .map((recommendations, index) => (
                     <div key={ index } data-testid={ `${index}-recommendation-card` }>
@@ -89,7 +88,7 @@ function CurrentRecipeDetails({ data, ingredients, measure, pathname,
                   }
                 </ul>
                 <p data-testid="instructions">{el.strInstructions}</p>
-                <div className="recommendationsCardDiv">
+                <div className="recommendationscarddiv">
                   { Object.values(recommendationsData)[0].slice(0, MAX_RECOMMENDATIONS)
                     .map((recommendations, index) => (
                       <div key={ index } data-testid={ `${index}-recommendation-card` }>
