@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { PropTypes } from 'prop-types';
+import Swal from 'sweetalert2';
 import MealsContext from './SearchContext';
 
 const INGREDIENTS_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';

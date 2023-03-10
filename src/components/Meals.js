@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import MealsContext from '../context/SearchContext';
 import Header from './Header';
+import RecipeCard from './RecipePage';
 import Footer from './Footer';
 import RecipeCard from './RecipeCard';
 
