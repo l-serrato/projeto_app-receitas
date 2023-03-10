@@ -13,8 +13,8 @@ export default function Buttons() {
     const url = `http://localhost:3000${history.location.pathname}`;
     copy(url);
     setTextCopy(true);
-    const alertNode = document.querySelector('.alert');
-    setTimeout(() => setTextCopy(false), 5000);
+    const time = 5000;
+    setTimeout(() => setTextCopy(false), time);
   };
 
   return (
