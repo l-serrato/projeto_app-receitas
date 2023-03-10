@@ -1,0 +1,11 @@
+.recommendationsCardDiv {
+  display: flex;
+  overflow: scroll; /* PROPRIEDADE DO SCROLL EM CAROUSEL */
+  width: 435px; /* MUDAR ELA PODE QUEBRAR O REQ27,
+  FAZ COM QUE SEMPRE APAREÇA SÓ 2 RECOMENDAÇÕES NA TELA */
+}
+
+.recommendationsCardDiv img {
+  margin: 0 10px 10px;
+  width: 200px;
+}

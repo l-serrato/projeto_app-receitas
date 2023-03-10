@@ -11,6 +11,7 @@ import DoneRecipes from './components/DoneRecipes';
 import FavoriteRecipes from './components/FavoriteRecipes';
 /* import Foods from './components/Foods'; */
 import Meals from './components/Meals';
+import RecipeDetails from './components/RecipeDetails';
 
 function App() {
   return (
@@ -31,24 +32,16 @@ function App() {
           path="/favorite-recipes"
           render={ (props) => <FavoriteRecipes { ...props } /> }
         />
+        <Route exact path="/meals/:id" component={ RecipeDetails } />
+        <Route exact path="/drinks/:id" component={ RecipeDetails } />
         <Route
           exact
-          path="/meals/:id_da_receita"
+          path="/meals/:id_da_receita/in_progress"
           render={ (props) => <Recipe { ...props } /> }
         />
         <Route
           exact
-          path="/drinks/:id_da_receita"
-          render={ (props) => <Recipe { ...props } /> }
-        />
-        <Route
-          exact
-          path="/meals/:id-da-receita/in-progress"
-          render={ (props) => <Recipe { ...props } /> }
-        />
-        <Route
-          exact
-          path="/drinks/:id-da-receita/in-progress"
+          path="/drinks/:id_da_receita/in_progress"
           render={ (props) => <Recipe { ...props } /> }
         />
 
