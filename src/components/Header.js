@@ -32,11 +32,9 @@ function Header({ pageTitle }) {
         </button>
         { showSearchBar
           ? (
-            <SearchApiDrinks>
-              <SearchApiMeals>
-                <SearchBar />
-              </SearchApiMeals>
-            </SearchApiDrinks>
+
+            <SearchBar />
+
           )
           : null }
       </header>
