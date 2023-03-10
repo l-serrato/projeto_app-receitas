@@ -101,6 +101,7 @@ function Carousel({ data, ingredients, measure, pathname,
                   ))
                 }
                 <p data-testid="instructions">{el.strInstructions}</p>
+                <Buttons />
                 <div className="recommendationsCardDiv">
                   { Object.values(recommendationsData)[0].slice(0, MAX_RECOMMENDATIONS)
                     .map((recommendations, index) => (
