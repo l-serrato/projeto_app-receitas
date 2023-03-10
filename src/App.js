@@ -6,7 +6,6 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 // import Footer from './components/Footer';
 import Drinks from './components/Drinks';
-import RecipePage from './components/RecipePage';
 import DoneRecipes from './components/DoneRecipes';
 import FavoriteRecipes from './components/FavoriteRecipes';
 import Meals from './components/Meals';
