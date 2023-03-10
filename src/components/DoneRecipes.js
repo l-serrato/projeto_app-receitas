@@ -11,7 +11,7 @@ export default function DoneRecipes() {
       <button data-testid="filter-by-all-btn">All</button>
       <button data-testid="filter-by-meal-btn">Meals</button>
       <button data-testid="filter-by-drink-btn">Drinks</button>
-      {doneRecipes.map((recipe, index) => (
+      {doneRecipes?.map((recipe, index) => (
         recipe.type === 'meal' ? (
           <div key={ recipe.id }>
             <img
