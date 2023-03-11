@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
 import { PropTypes } from 'prop-types';
-import Swal from 'sweetalert2';
 import MealsContext from './SearchContext';
 
 const INGREDIENTS_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
@@ -9,18 +8,23 @@ const FIRST_LETTER_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?f='
 
 export default function SearchApiMeals({ children }) {
   const [endpoint, setEndpoint] = useState('');
-  const [pesquisa, setPesquisa] = useState('');
+  const [pesquisaMeals, setPesquisa] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('name');
-  const [resultMeals, setResultMeal] = useState([]);
+  const [resultMeals, setResultMeals] = useState([]);
 
   useEffect(() => {
     const fetchData = async (searchUrl) => {
       try {
         const data = await fetch(searchUrl);
         const json = await data.json();
-        return setResultMeal(json);
+
+        if (!json.meals) {
+          return setResultMeals({ meals: 'no results' });
+        }
+
+        return setResultMeals(json);
       } catch (error) {
-        setResultMeal(error);
+        setResultMeals(error);
       }
     };
 
@@ -30,30 +34,20 @@ export default function SearchApiMeals({ children }) {
   const searchMeals = (e) => {
     e.preventDefault();
 
-    if (pesquisa === '' || !pesquisa) {
-      if (!Swal) {
-        global.alert('Insira um termo de busca.');
-      } else {
-        return Swal.fire({
-          titleText: 'Insira um termo de busca.',
-          icon: 'info',
-          confirmButtonText: 'Beleza!',
-        });
-      }
+    if (pesquisaMeals === '' || !pesquisaMeals) {
+      global.alert('Insira um termo de busca.');
     }
 
     switch (selectedCategory) {
     case 'ingredient':
-      setEndpoint(`${INGREDIENTS_URL}${pesquisa}`);
+      setEndpoint(`${INGREDIENTS_URL}${pesquisaMeals}`);
       break;
     case 'name':
-      setEndpoint(`${NAME_URL}${pesquisa}`);
+      setEndpoint(`${NAME_URL}${pesquisaMeals}`);
       break;
     case 'first letter':
-      return pesquisa.length === 1 ? setEndpoint(`${FIRST_LETTER_URL}${pesquisa}`)
-        : Swal.fire({
-          titleText: 'Your search must have only 1 (one) character',
-        });
+      return pesquisa.length === 1 ? setEndpoint(`${FIRST_LETTER_URL}${pesquisaMeals}`)
+        : global.alert('Your search must have only 1 (one) character');
     default:
       console.log('Default case :D');
     }
@@ -65,20 +59,20 @@ export default function SearchApiMeals({ children }) {
     setSelectedCategory(event.target.value)
   );
 
-  const clearResults = () => {
-    setResultMeal([]);
-    setPesquisa();
+  const clearMeals = () => {
+    setResultMeals([]);
+    setPesquisa('');
   };
 
   const mealsValues = useMemo(() => ({
     onChangeSelectedCategoryMeal,
     onChangeSearchMeal,
     searchMeals,
-    clearResults,
+    clearMeals,
     selectedCategory,
-    pesquisa,
+    pesquisaMeals,
     resultMeals,
-  }), [resultMeals, pesquisa, selectedCategory]);
+  }), [resultMeals, pesquisaMeals, selectedCategory]);
 
   return (
     <MealsContext.Provider value={ mealsValues }>

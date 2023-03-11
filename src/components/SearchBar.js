@@ -10,7 +10,8 @@ function SearchBar() {
     onChangeSelectedCategoryMeal,
     searchMeals,
     resultMeals,
-    clearResults,
+    clearMeals,
+    pesquisaMeals,
   } = useContext(MealsContext);
 
   const { meals } = resultMeals;
@@ -20,23 +21,45 @@ function SearchBar() {
     onChangeSelectedCategoryDrink,
     onChangeSearchDrink,
     resultDrinks,
+    clearDrinks,
+    pesquisaDrinks,
   } = useContext(DrinksContext);
 
+  const { drinks } = resultDrinks;
+
+  const { pathname } = history.location;
+
   const verifyPathname = (event) => {
-    const { pathname } = history.location;
     if (pathname === '/drinks') {
       onChangeSelectedCategoryDrink(event);
     } else onChangeSelectedCategoryMeal(event);
   };
 
   useEffect(() => {
-    if (meals && meals.length === 1) {
+    if (meals?.length === 1) {
       history.push(`/meals/${meals[0].idMeal}`);
       return () => {
-        clearResults();
+        clearMeals();
       };
     }
+
+    if (meals === 'no results' && pathname === '/meals') {
+      global.alert('Sorry, we haven\'t found any recipes for these filters.');
+    }
   }, [meals]);
+
+  useEffect(() => {
+    if (drinks?.length === 1) {
+      history.push(`/drinks/${drinks[0].idDrink}`);
+      return () => {
+        clearDrinks();
+      };
+    }
+
+    if (drinks === 'no results' && pathname === '/drinks') {
+      global.alert('Sorry, we haven\'t found any recipes for these filters.');
+    }
+  }, [drinks]);
 
   return (
     <div>
@@ -49,8 +72,9 @@ function SearchBar() {
           type="text"
           data-testid="search-input"
           placeholder="Search"
+          value={ pathname === '/drinks' ? pesquisaDrinks : pesquisaMeals }
           onChange={
-            history.location.pathname === '/drinks'
+            pathname === '/drinks'
               ? onChangeSearchDrink : onChangeSearchMeal
           }
         />
