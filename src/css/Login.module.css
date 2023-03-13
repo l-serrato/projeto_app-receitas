@@ -62,3 +62,7 @@
 ::placeholder {
   color: var(--main-purple);
 }
+
+:disabled {
+  background-color: grey;
+}
