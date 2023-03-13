@@ -10,28 +10,29 @@ function RecipeDetails() {
   const [data, setData] = useState({ [pathname]: [{}] });
   const [recommendationsData, setRecommendationsData] = useState({ [pathname]: [{}] });
   const [doneRecipes, setDoneRecipes] = useState([]);
+  const [inProgressRecipes, setInProgressRecipes] = useState({ drinks: {}, meals: {} });
 
   const fetchUrl = async (url, setFunc) => {
     const response = await fetch(url);
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     setFunc(result);
     return result;
   };
 
   useEffect(() => {
     const getData = async () => {
-      console.log('chamada a api', pathname);
+      // console.log('chamada a api', pathname);
       if (history.location.pathname.includes('meals')) {
-        console.log('if');
+        // console.log('if');
         await fetchUrl(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`, setData);
         await fetchUrl('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=', setRecommendationsData);
       }
     };
     const getData2 = async () => {
-      console.log('chamada a api', pathname);
+      // console.log('chamada a api', pathname);
       if (history.location.pathname.includes('drinks')) {
-        console.log('else if');
+        // console.log('else if');
         await fetchUrl(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`, setData);
         await fetchUrl('https://www.themealdb.com/api/json/v1/1/search.php?s=', setRecommendationsData);
       }
@@ -42,7 +43,23 @@ function RecipeDetails() {
     const getDoneRecipes = localStorage.getItem('doneRecipes');
     const localDoneRecipes = getDoneRecipes ? JSON.parse(getDoneRecipes) : [];
     setDoneRecipes(localDoneRecipes);
+
+    const getInProgressRecipes = localStorage.getItem('inProgressRecipes');
+    const localInProgressRecipes = getInProgressRecipes
+      ? JSON.parse(getInProgressRecipes) : { drinks: {}, meals: {} };
+    setInProgressRecipes(localInProgressRecipes);
+    // console.log(`${id}/in-progress`);
   }, [id, pathname]);
+
+  const nameBTN = (name) => {
+    if (name === 'meals' && Object.keys(inProgressRecipes.meals).includes(id)) {
+      return 'Continue Recipe';
+    }
+    if (name === 'drinks' && Object.keys(inProgressRecipes.drinks).includes(id)) {
+      return 'Continue Recipe';
+    }
+    return 'Start Recipe';
+  };
 
   const ingredientsKeys = Object.keys(data[pathname][0])
     .filter((el) => el.includes('strIngredient'));
@@ -70,8 +87,9 @@ function RecipeDetails() {
                 data-testid="start-recipe-btn"
                 style={ { position: 'fixed',
                   bottom: '0px' } }
+                onClick={ () => history.push(`${id}/in-progress`) }
               >
-                Start Recipe
+                { nameBTN(pathname.includes('meals') ? 'meals' : 'drinks') }
               </button>
             )
         }
@@ -95,8 +113,9 @@ function RecipeDetails() {
               data-testid="start-recipe-btn"
               style={ { position: 'fixed',
                 bottom: '0px' } }
+              onClick={ () => history.push(`${id}/in-progress`) }
             >
-              Start Recipe
+              { nameBTN(pathname.includes('meals') ? 'meals' : 'drinks') }
             </button>
           )
       }
