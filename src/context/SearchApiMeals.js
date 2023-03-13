@@ -46,7 +46,8 @@ export default function SearchApiMeals({ children }) {
       setEndpoint(`${NAME_URL}${pesquisaMeals}`);
       break;
     case 'first letter':
-      return pesquisa.length === 1 ? setEndpoint(`${FIRST_LETTER_URL}${pesquisaMeals}`)
+      return pesquisaMeals.length === 1
+        ? setEndpoint(`${FIRST_LETTER_URL}${pesquisaMeals}`)
         : global.alert('Your search must have only 1 (one) character');
     default:
       console.log('Default case :D');

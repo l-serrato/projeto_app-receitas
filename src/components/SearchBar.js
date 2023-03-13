@@ -45,6 +45,7 @@ function SearchBar() {
 
     if (meals === 'no results' && pathname === '/meals') {
       global.alert('Sorry, we haven\'t found any recipes for these filters.');
+      return null;
     }
   }, [meals]);
 
@@ -58,6 +59,7 @@ function SearchBar() {
 
     if (drinks === 'no results' && pathname === '/drinks') {
       global.alert('Sorry, we haven\'t found any recipes for these filters.');
+      return null;
     }
   }, [drinks]);
 
