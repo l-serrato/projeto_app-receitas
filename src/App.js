@@ -6,7 +6,6 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 // import Footer from './components/Footer';
 import Drinks from './components/Drinks';
-import RecipePage from './components/RecipePage';
 import DoneRecipes from './components/DoneRecipes';
 import FavoriteRecipes from './components/FavoriteRecipes';
 import Meals from './components/Meals';
@@ -53,22 +52,22 @@ function App() {
             <Route
               exact
               path="/meals/:id"
-              render={ (props) => <RecipePage { ...props } /> }
+              render={ (props) => <RecipeDetails { ...props } /> }
             />
             <Route
               exact
               path="/drinks/:id"
-              render={ (props) => <RecipePage { ...props } /> }
+              render={ (props) => <RecipeDetails { ...props } /> }
             />
             <Route
               exact
               path="/meals/:id/in-progress"
-              render={ (props) => <RecipePage { ...props } /> }
+              render={ (props) => <RecipeDetails { ...props } /> }
             />
             <Route
               exact
               path="/drinks/:id/in-progress"
-              render={ (props) => <RecipePage { ...props } /> }
+              render={ (props) => <RecipeDetails { ...props } /> }
             />
             <Route path="*" render={ () => <NotFound /> } />
           </Switch>

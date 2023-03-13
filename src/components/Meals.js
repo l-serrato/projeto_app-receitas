@@ -31,6 +31,8 @@ export default function Meals() {
         ))
           : <p>Nada por aqui... Procure alguma coisa!</p>
       }
+
+      <Footer />
     </main>
   );
 }
