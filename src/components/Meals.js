@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import MealsContext from '../context/SearchContext';
 import Header from './Header';
-import RecipeCard from './RecipePage';
+import RecipeCard from './RecipeCard';
 import Footer from './Footer';
 import RecipeCard from './RecipeCard';
+
+const START = 0;
+const END = 12;
 
 const START = 0;
 const END = 12;
