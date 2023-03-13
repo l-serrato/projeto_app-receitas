@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import '../styles/Carousel.css';
+import Buttons from './Buttons';
 
 function Carousel({ data, ingredients, measure, pathname,
   recommendationsData }) {
@@ -45,6 +46,7 @@ function Carousel({ data, ingredients, measure, pathname,
                 data-testid="video"
                 src={ `https://www.youtube.com/embed/${el.strYoutube.replace('https://www.youtube.com/watch?v=', '')}` }
               />
+              <Buttons />
               <div className="recommendationsCardDiv">
                 { Object.values(recommendationsData)[0].slice(0, MAX_RECOMMENDATIONS)
                   .map((recommendations, index) => (
@@ -99,6 +101,7 @@ function Carousel({ data, ingredients, measure, pathname,
                   ))
                 }
                 <p data-testid="instructions">{el.strInstructions}</p>
+                <Buttons />
                 <div className="recommendationsCardDiv">
                   { Object.values(recommendationsData)[0].slice(0, MAX_RECOMMENDATIONS)
                     .map((recommendations, index) => (
