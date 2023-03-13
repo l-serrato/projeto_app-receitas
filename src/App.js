@@ -6,11 +6,13 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 // import Footer from './components/Footer';
 import Drinks from './components/Drinks';
+// import Recipe from './components/Recipe';
 import DoneRecipes from './components/DoneRecipes';
 import FavoriteRecipes from './components/FavoriteRecipes';
 /* import Foods from './components/Foods'; */
 import Meals from './components/Meals';
 import RecipeDetails from './components/RecipeDetails';
+import RecipeInProgress from './components/RecipeInProgress';
 
 function App() {
   return (
@@ -33,7 +35,8 @@ function App() {
         />
         <Route exact path="/meals/:id" component={ RecipeDetails } />
         <Route exact path="/drinks/:id" component={ RecipeDetails } />
-
+        <Route exact path="/meals/:id/in-progress" component={ RecipeInProgress } />
+        <Route exact path="/drinks/:id/in-progress" component={ RecipeInProgress } />
       </Switch>
     </BrowserRouter>
   );
