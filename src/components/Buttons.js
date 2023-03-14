@@ -52,13 +52,14 @@ export default function Buttons({ data }) {
       localStorage.setItem('favoriteRecipes', JSON.stringify(values));
     }
   };
-
   return (
     <div>
       <button data-testid="share-btn" onClick={ shareButton }>
         <img alt="shareIcon" src={ shareIcon } />
       </button>
+
       <button data-testid="favorite-btn" onClick={ saveFavorite }>
+
         <img alt="heartIcon" src={ whiteHeartIcon } />
       </button>
       {textCopy && (
