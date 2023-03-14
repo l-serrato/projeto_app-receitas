@@ -15,7 +15,6 @@ function RecipeDetails() {
   const fetchUrl = async (url, setFunc) => {
     const response = await fetch(url);
     const result = await response.json();
-    // console.log(result);
     setFunc(result);
     return result;
   };
@@ -81,8 +80,7 @@ function RecipeDetails() {
             ? '' : (
               <button
                 data-testid="start-recipe-btn"
-                style={ { position: 'fixed',
-                  bottom: '0px' } }
+                style={ { position: 'fixed', bottom: '0px' } }
                 onClick={ () => history.push(`${id}/in-progress`) }
               >
                 { nameBTN(pathname.includes('meals') ? 'meals' : 'drinks') }
@@ -107,8 +105,7 @@ function RecipeDetails() {
           ? '' : (
             <button
               data-testid="start-recipe-btn"
-              style={ { position: 'fixed',
-                bottom: '0px' } }
+              style={ { position: 'fixed', bottom: '0px' } }
               onClick={ () => history.push(`${id}/in-progress`) }
             >
               { nameBTN(pathname.includes('meals') ? 'meals' : 'drinks') }

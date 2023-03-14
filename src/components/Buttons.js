@@ -54,6 +54,7 @@ export default function Buttons({ data }) {
       setLocal([values]);
     }
   };
+
   const saveFavorite = () => {
     const pathname = history.location.pathname.split('/');
     if (pathname[1] === 'meals') {

@@ -4,40 +4,72 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Login from './components/Login';
 import Profile from './components/Profile';
-// import Footer from './components/Footer';
 import Drinks from './components/Drinks';
-// import Recipe from './components/Recipe';
 import DoneRecipes from './components/DoneRecipes';
 import FavoriteRecipes from './components/FavoriteRecipes';
-/* import Foods from './components/Foods'; */
 import Meals from './components/Meals';
+import SearchApiDrinks from './context/SearchApiDrinks';
+import SearchApiMeals from './context/SearchApiMeals';
+import NotFound from './components/NotFound';
 import RecipeDetails from './components/RecipeDetails';
 import RecipeInProgress from './components/RecipeInProgress';
 
 function App() {
   return (
     <BrowserRouter>
-
-      <Switch>
-        <Route exact path="/" render={ () => <Login /> } />
-        <Route exact path="/meals" render={ (props) => <Meals { ...props } /> } />
-        <Route exact path="/profile" render={ (props) => <Profile { ...props } /> } />
-        <Route exact path="/drinks" render={ (props) => <Drinks { ...props } /> } />
-        <Route
-          exact
-          path="/done-recipes"
-          render={ (props) => <DoneRecipes { ...props } /> }
-        />
-        <Route
-          exact
-          path="/favorite-recipes"
-          render={ (props) => <FavoriteRecipes { ...props } /> }
-        />
-        <Route exact path="/meals/:id" component={ RecipeDetails } />
-        <Route exact path="/drinks/:id" component={ RecipeDetails } />
-        <Route exact path="/meals/:id/in-progress" component={ RecipeInProgress } />
-        <Route exact path="/drinks/:id/in-progress" component={ RecipeInProgress } />
-      </Switch>
+      <SearchApiDrinks>
+        <SearchApiMeals>
+          <Switch>
+            <Route exact path="/" render={ () => <Login /> } />
+            <Route
+              exact
+              path="/meals"
+              render={ (props) => (
+                <Meals { ...props } />
+              ) }
+            />
+            <Route exact path="/profile" render={ (props) => <Profile { ...props } /> } />
+            <Route
+              exact
+              path="/drinks"
+              render={
+                (props) => <Drinks { ...props } />
+              }
+            />
+            <Route
+              exact
+              path="/done-recipes"
+              render={ (props) => <DoneRecipes { ...props } /> }
+            />
+            <Route
+              exact
+              path="/favorite-recipes"
+              render={ (props) => <FavoriteRecipes { ...props } /> }
+            />
+            <Route
+              exact
+              path="/meals/:id"
+              render={ (props) => <RecipeDetails { ...props } /> }
+            />
+            <Route
+              exact
+              path="/drinks/:id"
+              render={ (props) => <RecipeDetails { ...props } /> }
+            />
+            <Route
+              exact
+              path="/meals/:id/in-progress"
+              render={ (props) => <RecipeInProgress { ...props } /> }
+            />
+            <Route
+              exact
+              path="/drinks/:id/in-progress"
+              render={ (props) => <RecipeInProgress { ...props } /> }
+            />
+            <Route path="*" render={ () => <NotFound /> } />
+          </Switch>
+        </SearchApiMeals>
+      </SearchApiDrinks>
     </BrowserRouter>
   );
 }
