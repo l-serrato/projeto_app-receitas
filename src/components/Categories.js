@@ -5,7 +5,8 @@ export default function Categories() {
   const history = useHistory();
   const [categories, setcategories] = useState();
   const [endpoint, setEndpoint] = useState();
-  const [resultsCategorie, setResultsCategorie] = useState();
+  const [setResultsCategorie] = useState();
+  const [toggle, setToggle] = useState();
   const fetchCategoriesMeals = async () => {
     try {
       const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
@@ -50,14 +51,21 @@ export default function Categories() {
     }
   }, [endpoint]);
 
-  const categorieClick = ({ target }) => (
-    history.location.pathname === '/meals'
-      ? setEndpoint(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${target.value}`)
-      : setEndpoint(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${target.value}`));
-
   const allButon = () => (
     history.location.pathname === '/meals'
       ? setEndpoint('https://www.themealdb.com/api/json/v1/1/search.php?s=') : setEndpoint('https://www.thecocktaildb.com/api/json/v1/1/search.php?s='));
+
+  const categorieClick = ({ target }) => {
+    if (toggle === target.value) {
+      allButon();
+      setToggle();
+    } else {
+      setToggle(target.value);
+      return (history.location.pathname === '/meals'
+        ? setEndpoint(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${target.value}`)
+        : setEndpoint(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${target.value}`));
+    }
+  };
 
   return (
     <div>
