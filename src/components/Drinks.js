@@ -1,5 +1,6 @@
 import React from 'react';
 import Categories from './Categories';
+import Footer from './Footer';
 import Header from './Header';
 
 export default function Drinks() {
@@ -7,6 +8,7 @@ export default function Drinks() {
     <div>
       <Header pageTitle="Drinks" />
       <Categories />
+      <Footer />
     </div>
   );
 }
