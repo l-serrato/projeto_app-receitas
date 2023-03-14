@@ -57,7 +57,7 @@ export default function Buttons({ data }) {
       <button data-testid="share-btn" onClick={ shareButton }>
         <img alt="shareIcon" src={ shareIcon } />
       </button>
-      
+
       <button data-testid="favorite-btn" onClick={ saveFavorite }>
 
         <img alt="heartIcon" src={ whiteHeartIcon } />

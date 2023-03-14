@@ -10,9 +10,7 @@ function RecipeDetails() {
   const [data, setData] = useState({ [pathname]: [{}] });
   const [recommendationsData, setRecommendationsData] = useState({ [pathname]: [{}] });
   const [doneRecipes, setDoneRecipes] = useState([]);
-
   const [inProgressRecipes, setInProgressRecipes] = useState({ drinks: {}, meals: {} });
-
 
   const fetchUrl = async (url, setFunc) => {
     const response = await fetch(url);
@@ -29,7 +27,7 @@ function RecipeDetails() {
       }
     };
     const getData2 = async () => {
-       if (history.location.pathname.includes('drinks')) {
+      if (history.location.pathname.includes('drinks')) {
         await fetchUrl(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`, setData);
         await fetchUrl('https://www.themealdb.com/api/json/v1/1/search.php?s=', setRecommendationsData);
       }

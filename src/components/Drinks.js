@@ -29,11 +29,9 @@ export default function Drinks() {
         ))
           : <p>Nada por aqui... Procure alguma coisa!</p>
       }
-      <Footer />
-    </main>
-
       <Categories />
       <Footer />
     </main>
+
   );
 }

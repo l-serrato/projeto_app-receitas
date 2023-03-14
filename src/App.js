@@ -14,7 +14,6 @@ import NotFound from './components/NotFound';
 import RecipeDetails from './components/RecipeDetails';
 import RecipeInProgress from './components/RecipeInProgress';
 
-
 function App() {
   return (
     <BrowserRouter>
