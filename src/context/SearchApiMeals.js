@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
 import { PropTypes } from 'prop-types';
-import Swal from 'sweetalert2';
 import MealsContext from './SearchContext';
 
 const INGREDIENTS_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
@@ -8,7 +7,7 @@ const NAME_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 const FIRST_LETTER_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
 
 export default function SearchApiMeals({ children }) {
-  const [endpoint, setEndpoint] = useState('');
+  const [endpoint, setEndpoint] = useState('https://www.themealdb.com/api/json/v1/1/search.php?s=');
   const [pesquisaMeals, setPesquisa] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('name');
   const [resultMeals, setResultMeals] = useState([]);
