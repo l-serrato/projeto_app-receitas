@@ -15,6 +15,7 @@ export default function Meals() {
   return (
     <main>
       <Header pageTitle="Meals" />
+      <Categories />
       {
         mealList && mealList !== 'no results' ? mealList.map((meal, index) => (
           <RecipeCard
@@ -29,7 +30,6 @@ export default function Meals() {
           : <p>Nada por aqui... Procure alguma coisa!</p>
       }
 
-      <Categories />
       <Footer />
     </main>
   );

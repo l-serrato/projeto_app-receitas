@@ -73,6 +73,7 @@ export default function SearchApiDrinks({ children }) {
     selectedCategory,
     pesquisaDrinks,
     resultDrinks,
+    setResultDrinks,
   }), [resultDrinks, pesquisaDrinks, selectedCategory]);
 
   return (

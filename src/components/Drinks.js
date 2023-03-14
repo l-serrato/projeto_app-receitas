@@ -15,7 +15,7 @@ export default function Drinks() {
   return (
     <main>
       <Header pageTitle="Drinks" />
-
+      <Categories />
       {
         drinkList && drinkList !== 'no results' ? drinkList.map((drink, index) => (
           <RecipeCard
@@ -29,7 +29,6 @@ export default function Drinks() {
         ))
           : <p>Nada por aqui... Procure alguma coisa!</p>
       }
-      <Categories />
       <Footer />
     </main>
 
