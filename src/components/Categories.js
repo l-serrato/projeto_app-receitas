@@ -44,10 +44,11 @@ export default function Categories() {
       try {
         const response = await fetch(endpoint);
         const json = await response.json();
-        return history.location.pathname === '/meals'
-          ? setResultMeals(json) : setResultDrinks(json);
+        return (history.location.pathname === '/meals'
+          ? setResultMeals(json) : setResultDrinks(json));
       } catch (error) {
-        throw new Error(error);
+        return history.location.pathname === '/meals'
+          ? setResultMeals(error) : setResultDrinks(error);
       }
     };
     if (endpoint) {
