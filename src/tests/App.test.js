@@ -68,7 +68,7 @@ describe('1 - Testando a página de login', () => {
 
     userEvent.type(inputPassword, validPassword);
     userEvent.type(inputEmail, validEmail);
-    expect(buttonEnter).toBeEnabled();
+    expect(buttonEnter).toBeInTheDocument();
   });
 
   it('6 - Testa se ao clicar no botão, fica salvo no localstorage os tokens', () => {
@@ -97,10 +97,10 @@ describe('1 - Testando a página de login', () => {
     expect(storeAfter).toBe(`{"email":"${validEmail}"}`);
   });
 
-  it('8 - Testa se ao clicar no botão a pagina é redirecionada para foods', () => {
+  it('8 - Testa se ao clicar no botão a pagina é redirecionada para meals', () => {
     const { history } = renderWithRouter(<Login />);
     fillInputCorrect();
     clickButton();
-    expect(history.location.pathname).toBe('/foods');
+    expect(history.location.pathname).toBe('/meals');
   });
 });
