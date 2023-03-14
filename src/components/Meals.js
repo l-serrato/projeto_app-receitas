@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import MealsContext from '../context/SearchContext';
 import Header from './Header';
 import RecipeCard from './RecipeCard';
+import Categories from './Categories';
 import Footer from './Footer';
 
 const START = 0;
@@ -28,6 +29,7 @@ export default function Meals() {
           : <p>Nada por aqui... Procure alguma coisa!</p>
       }
 
+      <Categories />
       <Footer />
     </main>
   );

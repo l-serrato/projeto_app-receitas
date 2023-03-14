@@ -12,6 +12,8 @@ import SearchApiDrinks from './context/SearchApiDrinks';
 import SearchApiMeals from './context/SearchApiMeals';
 import NotFound from './components/NotFound';
 import RecipeDetails from './components/RecipeDetails';
+import RecipeInProgress from './components/RecipeInProgress';
+
 
 function App() {
   return (
@@ -58,12 +60,12 @@ function App() {
             <Route
               exact
               path="/meals/:id/in-progress"
-              render={ (props) => <RecipeDetails { ...props } /> }
+              render={ (props) => <RecipeInProgress { ...props } /> }
             />
             <Route
               exact
               path="/drinks/:id/in-progress"
-              render={ (props) => <RecipeDetails { ...props } /> }
+              render={ (props) => <RecipeInProgress { ...props } /> }
             />
             <Route path="*" render={ () => <NotFound /> } />
           </Switch>
