@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import DrinksContext from '../context/DinksContext';
+import MealsContext from '../context/SearchContext';
 
 export default function Categories() {
+  const { setResultMeals } = useContext(MealsContext);
+  const { setResultDrinks } = useContext(DrinksContext);
   const history = useHistory();
   const [categories, setcategories] = useState();
   const [endpoint, setEndpoint] = useState();
-  const [resultsCategorie, setResultsCategorie] = useState();
   const [toggle, setToggle] = useState();
   const fetchCategoriesMeals = async () => {
     try {
@@ -41,7 +44,8 @@ export default function Categories() {
       try {
         const response = await fetch(endpoint);
         const json = await response.json();
-        setResultsCategorie(json);
+        return history.location.pathname === '/meals'
+          ? setResultMeals(json) : setResultDrinks(json);
       } catch (error) {
         throw new Error(error);
       }
