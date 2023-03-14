@@ -22,17 +22,13 @@ function RecipeDetails() {
 
   useEffect(() => {
     const getData = async () => {
-      // console.log('chamada a api', pathname);
       if (history.location.pathname.includes('meals')) {
-        // console.log('if');
         await fetchUrl(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`, setData);
         await fetchUrl('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=', setRecommendationsData);
       }
     };
     const getData2 = async () => {
-      // console.log('chamada a api', pathname);
       if (history.location.pathname.includes('drinks')) {
-        // console.log('else if');
         await fetchUrl(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`, setData);
         await fetchUrl('https://www.themealdb.com/api/json/v1/1/search.php?s=', setRecommendationsData);
       }
