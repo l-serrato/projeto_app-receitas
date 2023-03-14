@@ -5,7 +5,7 @@ export default function Categories() {
   const history = useHistory();
   const [categories, setcategories] = useState();
   const [endpoint, setEndpoint] = useState();
-  const [setResultsCategorie] = useState();
+  const [resultsCategorie, setResultsCategorie] = useState();
   const [toggle, setToggle] = useState();
   const fetchCategoriesMeals = async () => {
     try {
