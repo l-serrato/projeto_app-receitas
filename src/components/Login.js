@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import styles from '../css/Login.module.css';
+import logo from '../images/logo.svg';
+import tomate from '../images/tomate.png';
 
 function Login() {
   const history = useHistory();
@@ -33,38 +36,41 @@ function Login() {
   };
 
   return (
-    <div>
-      <div>
-        <form>
-          <h2>App de Receitas Trybe</h2>
-          <label htmlFor="email">
-            e-mail:
-            <input
-              data-testid="email-input"
-              value={ state.email }
-              onChange={ handleChange }
-              name="email"
-            />
-          </label>
-          <label>
-            password:
-            <input
-              data-testid="password-input"
-              type="password"
-              value={ state.password }
-              onChange={ handleChange }
-              name="password"
-            />
-          </label>
-          <button
-            type="button"
-            data-testid="login-submit-btn"
-            disabled={ isDisabled }
-            onClick={ buttonClick }
-          >
-            Enter
-          </button>
-        </form>
+    <div className={ styles.mainContainer }>
+      <img src={ logo } alt="Ícone de prato" className={ styles.logo } />
+
+      <img src={ tomate } alt="Imagem de tomate" className={ styles.tomate } />
+
+      <div className={ styles.inputContainer }>
+        <h2 className={ styles.title }>LOGIN</h2>
+        <input
+          data-testid="email-input"
+          value={ state.email }
+          onChange={ handleChange }
+          name="email"
+          placeholder="Email"
+          className={ styles.inputs }
+        />
+
+        <input
+          data-testid="password-input"
+          type="password"
+          value={ state.password }
+          onChange={ handleChange }
+          name="password"
+          placeholder="Password"
+          className={ styles.inputs }
+        />
+
+        <button
+          type="button"
+          data-testid="login-submit-btn"
+          disabled={ isDisabled }
+          onClick={ buttonClick }
+          className={ styles.buttonSubmit }
+        >
+          Enter
+        </button>
       </div>
     </div>
   );
