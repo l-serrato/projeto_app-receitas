@@ -1,23 +1,21 @@
-
 :root {
 
-  --main-purple: #41197F;
+  --main-purple: #41197f;
 
 }
 
-
 .mainContainer {
+  align-items: center;
   background-color: var(--main-purple);
   display: flex;
-  flex-direction: column;
-  align-items: center;
   flex-basis: 1;
+  flex-direction: column;
 }
 
 .logo {
-  width: 200px;
   flex-basis: 300px;
   margin-bottom: 89px;
+  width: 200px;
 }
 
 .tomate {
@@ -27,36 +25,36 @@
 }
 
 .inputContainer {
-  padding-top: 90px;
+  align-items: center;
   background-color: white;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  align-items: center;
-  gap: 5px;
   font-weight: 500;
+  gap: 5px;
   line-height: 20px;
+  padding-top: 90px;
+  width: 100%;
 }
 
 .inputs {
-  padding: 10px;
   border: 1px solid rgb(179, 179, 179);
   border-radius: 7px;
+  padding: 10px;
 }
 
 
 .title {
-  font-family: Epilogue, Arial, Helvetica, sans-serif;
-  font-style: italic;
   color: var(--main-purple);
+  font-family: Epilogue , Arial , Helvetica , sans-serif;
+  font-style: italic;
 }
 
 .buttonSubmit {
-  width: 269px;
+  background-color: #fcc436;
   border: 0;
-  padding: 8px;
-  background-color: #FCC436;
   color: white;
+  padding: 8px;
+  width: 269px;
 }
 
 ::placeholder {
