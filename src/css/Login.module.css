@@ -1,0 +1,66 @@
+:root {
+
+  --main-purple: #41197f;
+
+}
+
+.mainContainer {
+  align-items: center;
+  background-color: var(--main-purple);
+  display: flex;
+  flex-basis: 1;
+  flex-direction: column;
+}
+
+.logo {
+  flex-basis: 300px;
+  margin-bottom: 89px;
+  width: 200px;
+}
+
+.tomate {
+  flex-grow: 1;
+  position: absolute;
+  top: 200px;
+}
+
+.inputContainer {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  gap: 5px;
+  line-height: 20px;
+  padding-top: 90px;
+  width: 100%;
+}
+
+.inputs {
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 7px;
+  padding: 10px;
+}
+
+
+.title {
+  color: var(--main-purple);
+  font-family: Epilogue , Arial , Helvetica , sans-serif;
+  font-style: italic;
+}
+
+.buttonSubmit {
+  background-color: #fcc436;
+  border: 0;
+  color: white;
+  padding: 8px;
+  width: 269px;
+}
+
+::placeholder {
+  color: var(--main-purple);
+}
+
+:disabled {
+  background-color: grey;
+}

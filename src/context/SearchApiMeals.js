@@ -73,6 +73,7 @@ export default function SearchApiMeals({ children }) {
     selectedCategory,
     pesquisaMeals,
     resultMeals,
+    setResultMeals,
   }), [resultMeals, pesquisaMeals, selectedCategory]);
 
   return (

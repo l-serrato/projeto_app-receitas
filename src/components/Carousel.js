@@ -46,9 +46,7 @@ function Carousel({ data, ingredients, measure, pathname,
                 data-testid="video"
                 src={ `https://www.youtube.com/embed/${el.strYoutube.replace('https://www.youtube.com/watch?v=', '')}` }
               />
-
               <Buttons data={ data.meals[0] } />
-
               <div className="recommendationsCardDiv">
                 { Object.values(recommendationsData)[0].slice(0, MAX_RECOMMENDATIONS)
                   .map((recommendations, index) => (
@@ -103,9 +101,7 @@ function Carousel({ data, ingredients, measure, pathname,
                   ))
                 }
                 <p data-testid="instructions">{el.strInstructions}</p>
-
                 <Buttons data={ data.drinks[0] } />
-
                 <div className="recommendationsCardDiv">
                   { Object.values(recommendationsData)[0].slice(0, MAX_RECOMMENDATIONS)
                     .map((recommendations, index) => (
