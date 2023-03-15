@@ -27,7 +27,8 @@ export default function Buttons({ data }) {
   }, [localFavorite, icon]);
 
   const shareButton = () => {
-    const url = `http://localhost:3000${history.location.pathname}`;
+    const pathname = history.location.pathname.split('/');
+    const url = `http://localhost:3000/${pathname[1]}/${pathname[2]}`;
     copy(url);
     setTextCopy(true);
     const time = 5000;

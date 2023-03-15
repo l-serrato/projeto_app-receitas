@@ -1,9 +1,10 @@
 import '../styles/RecipeInProgress.css';
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import copy from 'clipboard-copy';
-import FavoriteShareBtns from './FavoriteShareBtns';
-import { favoriteRecipeLocalStorage } from '../helpers/localStorageFunctions';
+/* import copy from 'clipboard-copy'; */
+/* import FavoriteShareBtns from './FavoriteShareBtns';
+import { favoriteRecipeLocalStorage } from '../helpers/localStorageFunctions'; */
+import Buttons from './Buttons';
 
 export default function RecipeInProgress() {
   const fetchById = (type, id) => fetch(`https://www.the${type}db.com/api/json/v1/1/lookup.php?i=${id}`)
@@ -11,8 +12,8 @@ export default function RecipeInProgress() {
     .then((data) => data);
   const [recipeDetails, setRecipeDetails] = useState({});
   const [labelClass, setLabelClass] = useState({});
-  const [linkCopied, setLinkCopied] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+  /* const [linkCopied, setLinkCopied] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false); */
   const [finishButtonDisabled, toggleFinishButtonDisabled] = useState(true);
   const history = useHistory();
   const { pathname } = history.location;
@@ -23,17 +24,17 @@ export default function RecipeInProgress() {
   const recipeType = pathname.includes('/meals') ? 'meals' : 'drinks';
   const recipeInfo = Object.keys(recipeDetails).length > 0 ? recipeDetails[recipeType][0]
     : '';
-  const doneRecipes = localStorage.getItem('doneRecipes')
-    ? JSON.parse(localStorage.getItem('doneRecipes')) : [];
+  /* const doneRecipes = localStorage.getItem('doneRecipes')
+    ? JSON.parse(localStorage.getItem('doneRecipes')) : []; */
 
   const localStorageClasses = localStorage.getItem('inProgressRecipes')
     ? JSON.parse(localStorage.getItem('inProgressRecipes'))
     : { [recipeType]: { [id]: { 0: '' } } };
 
-  const shareButton = () => {
+  /* const shareButton = () => {
     copy(window.location.href.replace('/in-progress', ''));
     setLinkCopied(true);
-  };
+  }; */
 
   const finishRecipe = () => {
     const data = new Date();
@@ -61,7 +62,7 @@ export default function RecipeInProgress() {
     history.push('/done-recipes');
   };
 
-  const saveFavoriteRecipe = () => {
+  /*   const saveFavoriteRecipe = () => {
     const getFavoritesRecipes = localStorage.getItem('favoriteRecipes');
     const localFavoritesRecipes = getFavoritesRecipes ? JSON
       .parse(getFavoritesRecipes) : [];
@@ -85,7 +86,7 @@ export default function RecipeInProgress() {
       id,
       setIsFavorite,
     );
-  };
+  }; */
 
   const handleIngredients = () => {
     const ingredients = [];
@@ -155,27 +156,17 @@ export default function RecipeInProgress() {
       setRecipeDetails(await fetchById('cocktail', id));
     }
     setLabelClass(localStorageClasses);
-    const getFavoritesRecipes = localStorage.getItem('favoriteRecipes');
+    /* const getFavoritesRecipes = localStorage.getItem('favoriteRecipes');
     const localFavoritesRecipes = getFavoritesRecipes ? JSON
       .parse(getFavoritesRecipes) : [];
-    setIsFavorite(localFavoritesRecipes.some((el) => el.id === id));
+    setIsFavorite(localFavoritesRecipes.some((el) => el.id === id)); */
   }, []);
 
   return (
     <div>
       {Object.keys(recipeDetails).length > 0 ? (
         <>
-          <FavoriteShareBtns
-            doneRecipes={ doneRecipes }
-            id={ id }
-            inProgressRecipes={ localStorageClasses }
-            linkCopied={ linkCopied }
-            isFavorite={ isFavorite }
-            pathname={ recipeType }
-            mustHaveStartButton={ false }
-            shareButton={ shareButton }
-            saveFavoriteRecipe={ saveFavoriteRecipe }
-          />
+          <Buttons data={ recipeDetails[Object.keys(recipeDetails)][0] } />
           <img data-testid="recipe-photo" src={ recipeInfo[recipeThumb] } alt="" />
           <h1 data-testid="recipe-title">{ recipeInfo[recipeName] }</h1>
           <h2 data-testid="recipe-category">{ recipeInfo.strCategory }</h2>
