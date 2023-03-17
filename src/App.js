@@ -41,11 +41,7 @@ function App() {
               path="/done-recipes"
               render={ (props) => <DoneRecipes { ...props } /> }
             />
-            <Route
-              exact
-              path="/favorite-recipes"
-              render={ (props) => <FavoriteRecipes { ...props } /> }
-            />
+            <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
             <Route
               exact
               path="/meals/:id"
